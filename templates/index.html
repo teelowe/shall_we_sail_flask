@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <h1>Tomales Bay - 7 Day Forecast - 6AM to 6PM</h1>
+    <table border="1">
+      <tr>
+          <th>Day</th>
+          <th>Date</th>
+          <th>Temp</th>
+          <th>Wind Speed</th>
+          <th>Wind Direction</th>
+          <th>Short Forecast</th>
+          <th>Detailed Forecast</th>
+      </tr>
+      {% for value in periods %}
+        {% if value.is_daytime %}
+        <tr>
+          <td>{{ value.name }}</td>
+          <td>{{ value.start_time }}</td>
+          <td>{{ value.temperature }}</td>
+          <td>{{ value.wind_speed }}</td>
+          <td>{{ value.wind_direction }}</td>
+          <td>{{ value.short_forecast }}</td>
+          <td>{{ value.detailed_forecast }}</td>
+        </tr>
+       {% endif %}
+      {% endfor %}
+    </table>
+    <h1>Tides for this period...</h1>
+    <table border="1">
+      <tr>
+        <th>Date & Time</th>
+        <th>Tide Height</th>
+        <th>Low / High</th>
+      </tr>
+      {% for value in tides %}
+      <tr>
+        <td>{{value.t}}</td>
+        <td>{{value.v}}</td>
+        <td>{{value.type}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+</body>
+</html>
